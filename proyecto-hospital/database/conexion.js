@@ -14,7 +14,6 @@ connection.connect((error) => { // Conectar a la base de datos
         console.error('Error al conectar a la base de datos: ', error); // Imprimir mensaje de error en la consola
     }
     console.log('Conexion exitosa')
-
     
 });
 

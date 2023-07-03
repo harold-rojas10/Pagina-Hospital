@@ -2,7 +2,7 @@ const funsiones = require('../database/funsiones.js')
 const consulta = require('../database/query.js')
 
 
-let tabla = new consulta.consultas('medicos')
+let tabla = new consulta.consultas('cita_medica')
 tabla.select("*", (error, results) => {
     if (error) {
         console.log("Error en la consulta")

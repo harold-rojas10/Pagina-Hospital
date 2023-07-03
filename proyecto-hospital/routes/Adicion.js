@@ -3,6 +3,8 @@ const consulta = require('../database/query.js')
 
 
 const thMedicos = 'cedula,nombre,apellido,especialidad,consultorio,correo'
+const thCitas = 'id_mascota, id_medico, fecha'
+
 const myInfo = {
     cedulaMedico: '499988777',
     nombreMedico: 'Eduardo',
