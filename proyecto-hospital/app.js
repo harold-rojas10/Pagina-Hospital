@@ -8,9 +8,44 @@ const exphbs = require("express-handlebars");//importacion de handelbars
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var medicosRouter = require('./routes/medicos');
+var PacientesRouter = require('./routes/pacientes');
+var citasRouter = require('./routes/citas');
+
+
 
 var app = express();
+//configuraciones para utilizar componentes
+const hbs = exphbs.create({
+  extname: '.hbs',
+  partialsDir: ["views/components"]
+})
+//helpers
+hbs.handlebars.registerHelper('formatoFecha', function(date){
+  return moment(date).format('YYYY-MM-DD')
+})
+hbs.handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+  switch (operator) {
+    case '==':
+      return (v1 == v2) ? options.fn(this) : options.inverse(this);
+    case '===':
+      return (v1 === v2) ? options.fn(this) : options.inverse(this);
+    case '!=':
+      return (v1 != v2) ? options.fn(this) : options.inverse(this);
+    case '!==':
+      return (v1 !== v2) ? options.fn(this) : options.inverse(this);
+    case '<':
+      return (v1 < v2) ? options.fn(this) : options.inverse(this);
+    case '<=':
+      return (v1 <= v2) ? options.fn(this) : options.inverse(this);
+    case '>':
+      return (v1 > v2) ? options.fn(this) : options.inverse(this);
+    case '>=':
+      return (v1 >= v2) ? options.fn(this) : options.inverse(this);
+    default:
+      return options.inverse(this);
+  }
+});
 
 // view engine setup
 app.engine(".hbs", hbs.engine);//define motor de plantilla
@@ -24,7 +59,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/medicos', medicosRouter);
+app.use('/pacientes', PacientesRouter);
+app.use('/citas', citasRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

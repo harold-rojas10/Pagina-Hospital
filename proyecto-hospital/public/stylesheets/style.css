@@ -1,8 +1,139 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0px;
+  margin: 0px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+
+}
+header{
+  text-align: center;
+  margin: 10px;
+  
+}
+.grid {
+  display: grid;
+  grid-template-columns: 5% 60% 30% 5%;
+  grid-template-rows: 40px;
+  margin: auto;
+  justify-content: space-between;
+  
+}
+.divTabla {
+  display: grid;
+  grid-template-columns:5% 60% 30% 5%;
+  margin: auto;
+}
+.sub_head {
+  grid-column: 2/3;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
 }
 
-a {
-  color: #00B7FF;
+.area2 {
+  grid-column: 3/4;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  text-align: right;
 }
+.area2 > a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 8px;
+  background-color: #0450c2ba;
+  border: none;
+  font-size: medium;
+  border-radius: 4px;
+}
+
+nav {
+  text-align: right;
+  margin: 10px;
+  padding: 0;
+  background-color: #0450c2ba;
+  padding-right: 3%;
+}
+nav > ul {
+  display: inline-flex;
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+
+}
+ul > li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-inline: 10px;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  margin-inline: 30px;
+  background-color: #03347eba;  
+}
+.btnAccion,table {
+  grid-column: 2/4;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #a4a2a2;
+  
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.botones{
+  display: flex;
+  border: hidden;
+}
+.iconos,td a:first-child{
+  margin-inline: 5px;
+}
+
+a:not(ul > li a),button,
+input[type="submit"] {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 8px;
+  background-color: #4caf50;
+  border: none;
+  font-size: medium;
+  border-radius: 4px;
+}
+
+a:hover,
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.area2 > a:hover {
+  background-color: #03347eba;
+
+}
+
+.cancelar{
+  background-color: red;
+}
+.cancelar:hover{
+  background-color: rgb(247, 65, 65);
+} 

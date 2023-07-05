@@ -16,6 +16,7 @@ class consultas {
         connection.query(`DELETE FROM ${this.name} WHERE ${columna}=${parametro}`, callback);
     }
     Update(datosNuevos, strWhere, callback) {
+        console.log(`UPDATE ${this.name} SET ${datosNuevos} WHERE ${strWhere}`)
         connection.query(`UPDATE ${this.name} SET ${datosNuevos} WHERE ${strWhere}`, callback);
     }
 

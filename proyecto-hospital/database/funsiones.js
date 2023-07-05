@@ -15,7 +15,7 @@ function StringAuto(Info) {
     console.log(datosTostring)
     return datosTostring
 }
-//se crea un estring con los datos que se va a actualizar
+//se crea un estring con los datos que se van a actualizar
 function StringUpdate(Info) {
     let keys = Object.keys(Info)
     let datos = Object.values(Info)
