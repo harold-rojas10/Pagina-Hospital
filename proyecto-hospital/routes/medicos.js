@@ -4,7 +4,7 @@ const { connection } = require('../database/conexion.js')
 const consulta = require('../database/query.js')
 const funsiones = require('../database/funsiones.js')
 const tabla = new consulta.consultas('medicos')
-const columnaCita = "Id_medico" //Nombre de la columna que posee la llave foranea entre la tabla de citas y medicos
+const columnaCita = "id_medico" //Nombre de la columna que posee la llave foranea entre la tabla de citas y medicos
 
 
 router.get('/', function (req, res, next) {
@@ -47,7 +47,6 @@ router.get('/agregar-medico', function (req, res, next) {
     });
 });
 
-//Agregar medicos
 router.post('/agregar', (req, res) => {
     const datos = funsiones.StringAuto(req.body)
     const thMedicos = 'nombre_medico,apellido_medico,cedula_medico,consultorio,correo,especialidad' //orden del formulario
@@ -65,7 +64,7 @@ router.post('/agregar', (req, res) => {
 //eliminar medicos
 router.get('/eliminar/:cedula', function (req, res, next) {
     const cedula = req.params.cedula
-    const columna = "cedula"
+    const columna = "cedula_medico"
     const tablaCita = new consulta.consultas('cita_medica')
     tablaCita.Delet(columnaCita, cedula, (error, results) => {
         if (error) {
