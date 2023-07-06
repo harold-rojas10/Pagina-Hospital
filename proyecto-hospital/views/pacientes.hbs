@@ -1,0 +1,72 @@
+<div class="grid">
+    <div class="sub_head">
+        <h2 style="margin: 0px;">{{title2}}</h2>
+    </div>
+    <div class="area2" style="padding-top: 5px;">
+        {{#if estado}}
+        <label for="addPaciente">Agregar {{title}}</label>
+        <a name="addPaciente" href="pacientes/agregar-paciente"><i class="fa fa-plus"></i></a>
+        {{/if}}
+    </div>
+    
+</div>
+<div class="divTabla">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Telefono</th>
+                <th>Correo</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each pacientes}}
+            <tr>
+                <form action="/pacientes/actualizar/{{cedula_paciente}}" method="post">
+                    <td><input type="text" id="cedula_paciente" name="cedula_paciente" value="{{cedula_paciente}}" disabled>
+                    </td>
+                    <td><input type="text" id="nombre_paciente" name="nombre_paciente" value="{{nombre_paciente}}" {{#ifCond
+                            @key '!=' ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
+                    <td><input type="text" id="apellido_paciente" name="apellido_paciente" value="{{apellido_paciente}}"
+                            {{#ifCond @key '!=' ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
+
+                    <td>
+                        <input type="tel" id="edad" name="edad" value="{{edad}}" {{#ifCond @key '!='
+                            ../claveSeleccionada}}{{../opcion}}{{/ifCond}}>
+                    </td>
+
+                    <td><input type="text" id="telefono" name="telefono" value="{{telefono}}" {{#ifCond
+                            @key '!=' ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
+                    <td><input type="text" id="correo" name="correo" value="{{correo}}" {{#ifCond @key '!='
+                            ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
+                    <td>
+                        <div class="botones">
+                            {{#if ../estado}}
+                            <a href="/pacientes/enviar/{{@key}}" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-trigger="hover focus" data-bs-content="Editar"><i class="fa fa-exchange"
+                                    aria-hidden="true"></i></a>
+                            <a href="/pacientes/eliminar/{{cedula_pacientes}}" class="cancelar iconos" data-bs-toggle="popover"
+                                data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="Elminar"><i
+                                    class="fa fa-times"></i></a>
+                            {{else}}
+                            {{#ifCond @key '==' ../claveSeleccionada}}
+                            <button type="submit" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-trigger="hover focus" data-bs-content="Enviar"
+                                data-bs-custom-class="custom-popover"><i class="fa fa-check"></i></button>
+                            <a href="/pacientes" class="cancelar iconos" data-bs-toggle="popover"
+                                data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="Cancelar"><i
+                                    class="fa fa-times"></i></a>
+                            {{/ifCond}}
+                            {{/if}}
+                        </div>
+                    </td>
+                </form>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

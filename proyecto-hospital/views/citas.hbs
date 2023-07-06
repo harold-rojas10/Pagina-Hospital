@@ -1,0 +1,62 @@
+<div class="grid">
+    <div class="sub_head">
+        <h2 style="margin: 0px;">{{title2}}</h2>
+    </div>
+    <div class="area2" style="padding-top: 5px;">
+        {{#if estado}}
+        <label for="addMedico">Agregar {{title}}</label>
+        <a name="addMedico" href="citas/agregar-cita"><i class="fa fa-plus"></i></a>
+        {{/if}}
+    </div>
+</div>
+<div class="divTabla">
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre paciente</th>
+                <th>Cedula paciente</th>
+                <th>Nombre medico</th>
+                <th>Consultorio</th>
+                <th>Fecha</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each citas}}
+
+            <tr>
+                <form action="/citas/actualizar/{{id}}" method="post">
+                    <td><input type="text" id="nombre_paciente" name="nombre_paciente" value="{{nombre_paciente}}" disabled></td>
+                    <td><input type="text" id="id_paciente" name="id_paciente" value="{{id_paciente}}" disabled></td>
+                    <td><input type="text" id="NombresApellidosMedico" value="{{nombre_medico}} {{apellido_medico}}" disabled></td>
+                    <td><input type="tel" id="consultorio" name="consultorio" value="{{consultorio}}" disabled></td>
+                    <td><input type="date" id="fecha" name="fecha" value="{{formatoFecha fecha}}" {{#ifCond @key '!='
+                            ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
+                    <td>
+                        <div class="botones">
+                            {{#if ../estado}}
+                            <a href="/citas/enviar/{{@key}}" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-trigger="hover focus" data-bs-content="Editar"><i class="fa fa-exchange"
+                                    aria-hidden="true"></i></a>
+                            <a href="/citas/eliminar/{{id}}" class="cancelar iconos" data-bs-toggle="popover"
+                                data-bs-placement="bottom" data-bs-trigger="hover focus" data-bs-content="Elminar"><i
+                                    class="fa fa-times"></i></a>
+                            {{else}}
+                            {{#ifCond @key '==' ../claveSeleccionada}}
+                            <button type="submit" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-trigger="hover focus" data-bs-content="Enviar"
+                                data-bs-custom-class="custom-popover"><i class="fa fa-check"></i></button>
+                            <a href="/citas" class="cancelar iconos" data-bs-toggle="popover" data-bs-placement="bottom"
+                                data-bs-trigger="hover focus" data-bs-content="Cancelar"><i class="fa fa-times"></i></a>
+                            {{/ifCond}}
+                            {{/if}}
+                        </div>
+                    </td>
+                </form>
+            </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
