@@ -80,7 +80,7 @@ select {
 }
 
 a:not(ul > li a), input[type="submit"] {
-    background-color: #4caf50;
+    background-color: #0450c2ba;
     color: #fff;
     text-decoration: none;
     padding: 10px 16px;
@@ -90,7 +90,7 @@ a:not(ul > li a), input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #03347eba;
 }
 
 input:required,
@@ -109,12 +109,12 @@ select:valid {
 }
 
 .volver {
-    background-color: #4cacaf;
+    background-color: red;
 
 }
 
 .volver:hover {
-    background-color: #429396;
+    background-color: rgb(247, 65, 65);
 }
 
 button {

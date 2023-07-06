@@ -21,12 +21,14 @@ router.get('/', function (req, res, next) {
   });
 
 });
+
 router.get('/enviar/:clave', function (req, res, next) {
   const clave = req.params.clave;
   tabla.select("*", (error, results) => {
     if (error) {
+      res.locals.message = "Error en la consulta <br>" + error;
       console.log("Error en la consulta", error)
-      res.status(500).send("Error en la consulta")
+      res.status(500).render('error')
     } else {
       res.render('pacientes', { title: 'pacientes', title2: 'PACIENTES REGISTRADOS', claveSeleccionada: clave, pacientes: results, opcion: 'disabled', estado: false })
     }
@@ -42,12 +44,13 @@ router.get('/agregar-paciente', function (req, res, next) {
 router.post('/agregar', (req, res) => {
   const datos = funsiones.StringAuto(req.body)
   //nombre columnas base de datos en orden del formulario
-  const thMedicos = 'cedula_paciente,nombre_paciente,apellido_paciente,edad,correo,telefono' 
+  const thMedicos = 'cedula_paciente,nombre_paciente,apellido_paciente,edad,correo,telefono'
   console.log(datos)
   tabla.Insert(thMedicos, datos, (error, results) => {
     if (error) {
-      console.log("Ocurrio un error en la ejecución", error)
-      res.status(500).render('errorSQL');
+      res.locals.message = "Error en la consulta <br>" + error;
+      console.log("Error en la consulta", error)
+      res.status(500).render('error')
     } else {
       res.redirect('/pacientes');
     }
@@ -60,20 +63,22 @@ router.get('/eliminar/:cedula', function (req, res, next) {
   const columna = "cedula_paciente"
   const tablaCita = new consulta.consultas('cita_medica')
   tablaCita.Delet(columnaCita, cedula, (error, results) => {
-      if (error) {
+    if (error) {
+      res.locals.message = "Error en la consulta <br>" + error;
+      console.log("Error en la consulta", error)
+      res.status(500).render('error')
+    } else {
+      tabla.Delet(columna, cedula, (error, results) => {
+        if (error) {
+          res.locals.message = "Error en la consulta <br>" + error;
+          res.locals.message = "Error en la consulta <br>" + error;
           console.log("Error en la consulta", error)
-          res.status(500).send("Error en la consulta cita")
-      } else {
-          tabla.Delet(columna, cedula, (error, results) => {
-              //connection.query(`DELETE FROM mascotas WHERE cedula_duenio=${cedula}`, (error, results) => {
-              if (error) {
-                  console.log("Error en la consulta", error)
-                  res.status(500).send("Error en la consulta paciente")
-              } else {
-                  res.redirect('/pacientes')
-              }
-          });
-      }
+          res.status(500).render('error')
+        } else {
+          res.redirect('/pacientes')
+        }
+      });
+    }
   });
 });
 
@@ -86,10 +91,10 @@ router.post('/actualizar/:cedula', (req, res) => {
   console.log(datos)
   const strWhere = 'cedula_paciente=' + req.params.cedula;
   tabla.Update(datos, strWhere, (error, results) => {
-    //connection.query(`UPDATE medicos SET nombres='${nombres}', apellidos='${apellidos}', especialidad='${especialidad}', consultorio=${consultorio}, correo='${correo}' WHERE cedula=${cedula}`, (error, result) => {
     if (error) {
-      console.log("Ocurrio un error en la ejecución", error)
-      res.status(500).send("Error en la consulta");
+      res.locals.message = "Error en la consulta <br>" + error;
+      console.log("Error en la consulta", error)
+      res.status(500).render('error')
     } else {
       res.redirect('/pacientes');
     }
