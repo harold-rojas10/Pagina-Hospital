@@ -1,28 +1,59 @@
 body {
+  display: grid;
+  grid-template-areas:
+    " head head head"
+    "nav nav nav"
+    "aside main asaid"
+    "footer footer footer";
+  grid-template-columns: 2% 96% 2%;
+  grid-template-rows: 100px 67px auto 50px;
+  min-height: 500px;
   padding: 0px;
   margin: 0px;
   font-family: Arial, sans-serif;
   background-color: white;
 
 }
-header{
+
+header {
+  grid-area: head;
   text-align: center;
   margin: 10px;
-  
+
 }
+
+nav {
+  grid-area: nav;
+  text-align: right;
+  margin: 10px;
+  padding: 0;
+  background-color: #0450c2ba;
+  padding-right: 3%;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 5% 60% 30% 5%;
   grid-template-rows: 40px;
   margin: auto;
   justify-content: space-between;
-  
+
 }
+
 .divTabla {
   display: grid;
-  grid-template-columns:5% 60% 30% 5%;
+  grid-template-columns: 5% 60% 30% 5%;
   margin: auto;
 }
+
 .sub_head {
   grid-column: 2/3;
   height: auto;
@@ -37,7 +68,8 @@ header{
   padding: 0px;
   text-align: right;
 }
-.area2 > a {
+
+.area2>a {
   color: #fff;
   text-decoration: none;
   padding: 8px 8px;
@@ -47,14 +79,7 @@ header{
   border-radius: 4px;
 }
 
-nav {
-  text-align: right;
-  margin: 10px;
-  padding: 0;
-  background-color: #0450c2ba;
-  padding-right: 3%;
-}
-nav > ul {
+nav>ul {
   display: inline-flex;
   list-style-type: none;
   text-align: center;
@@ -63,7 +88,8 @@ nav > ul {
 
 
 }
-ul > li a {
+
+ul>li a {
   display: inline-block;
   color: white;
   text-align: center;
@@ -76,9 +102,11 @@ ul > li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   margin-inline: 30px;
-  background-color: #03347eba;  
+  background-color: #03347eba;
 }
-.btnAccion,table {
+
+
+table {
   grid-column: 2/4;
   width: 100%;
   margin-left: auto;
@@ -86,12 +114,13 @@ li a:hover {
   border-collapse: collapse;
   margin-bottom: 10px;
 }
+
 th,
 td {
   padding: 8px;
   text-align: left;
   border: 1px solid #a4a2a2;
-  
+
 }
 
 th {
@@ -103,15 +132,18 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.botones{
+.botones {
   display: flex;
   border: hidden;
 }
-.iconos,td a:first-child{
+
+.iconos,
+td a:first-child {
   margin-inline: 5px;
 }
 
-a:not(ul > li a),button,
+a:not(ul > li a),
+button,
 input[type="submit"] {
   color: #fff;
   text-decoration: none;
@@ -127,14 +159,26 @@ input[type="submit"]:hover {
   background-color: #03347eba;
 }
 
-.area2 > a:hover {
+.area2>a:hover {
   background-color: #03347eba;
 
 }
 
-.cancelar{
+.cancelar {
   background-color: red;
 }
-.cancelar:hover{
+
+.cancelar:hover {
   background-color: rgb(247, 65, 65);
-} 
+}
+
+img {
+  float: left;
+  filter: brightness(1.4);
+  
+  height: 40px;
+  background-color: transparent;
+  margin-top: 3px;
+  margin-left: 3px;
+
+}
