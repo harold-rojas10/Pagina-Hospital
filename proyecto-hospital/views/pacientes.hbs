@@ -39,7 +39,7 @@
                             ../claveSeleccionada}}{{../opcion}}{{/ifCond}}>
                     </td>
 
-                    <td><input type="text" id="telefono" name="telefono" value="{{telefono}}" {{#ifCond
+                    <td><input type="tel" id="telefono" name="telefono" minlength="5" maxlength="8" pattern="[0-9]{5,8}" value="{{telefono}}" {{#ifCond
                             @key '!=' ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
                     <td><input type="text" id="correo" name="correo" value="{{correo}}" {{#ifCond @key '!='
                             ../claveSeleccionada}}{{../opcion}}{{/ifCond}}></td>
