@@ -60,6 +60,7 @@ router.post('/agregar', (req, res) => {
 //Accion de eliminar
 router.get('/eliminar/:cedula', function (req, res, next) {
   const cedula = req.params.cedula
+  console.log(cedula)
   const columna = "cedula_paciente"
   const tablaCita = new consulta.consultas('cita_medica')
   tablaCita.Delet(columnaCita, cedula, (error, results) => {
