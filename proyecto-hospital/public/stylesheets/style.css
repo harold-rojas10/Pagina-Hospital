@@ -43,8 +43,10 @@ footer {
 }
 .about {
   border-top: solid 0.5px #99bcefed;
+  border-bottom: solid 0.5px #99bcefed;
   font-style: italic;
   padding-top: 10px;
+  padding-bottom: 10px;
 
 }
 .about p{
