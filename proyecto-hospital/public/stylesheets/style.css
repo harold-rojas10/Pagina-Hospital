@@ -4,9 +4,9 @@ body {
     " head head head"
     "nav nav nav"
     "aside main asaid"
-    "footer footer footer";
+    "foter footer footer";
   grid-template-columns: 2% 96% 2%;
-  grid-template-rows: 100px 67px auto 50px;
+  grid-template-rows: 100px 67px auto 200px;
   min-height: 500px;
   padding: 0px;
   margin: 0px;
@@ -37,8 +37,22 @@ main {
 
 footer {
   grid-area: footer;
+  margin-top: 20px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
+.about {
+  border-top: solid 0.5px #99bcefed;
+  border-bottom: solid 0.5px #99bcefed;
+  font-style: italic;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
+}
+.about p{
+  margin: 0;
+  padding: 0;
+}
 .grid {
   display: grid;
   grid-template-columns: 5% 60% 30% 5%;
@@ -172,13 +186,21 @@ input[type="submit"]:hover {
   background-color: rgb(247, 65, 65);
 }
 
-img {
+nav > img {
   float: left;
   filter: brightness(1.4);
-  
   height: 40px;
   background-color: transparent;
   margin-top: 3px;
   margin-left: 3px;
 
 }
+
+.carousel-item > img {
+  height: 450px;
+}
+
+#carouselExampleSlidesOnly{
+  padding-left: 25%;
+}
+
